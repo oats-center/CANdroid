@@ -2,15 +2,23 @@
 CAN/ISOBUS Enabled Android
 
 ## NOTE ##
-This project is still evovling. Hence, there might be major changes to
+This project is still evolving. Hence, there might be major changes to
 different parts of the project coming soon. This README will be updated
 frequently to reflect these changes.
 
 ## What You Need to Make a CANdroid ##
 
 ### Hardware ###
-1. One rooted [Nexus 9][N9] 
+1. 1 x rooted [Nexus 9][N9] 
 [N9]:https://www.google.com/nexus/9
+2. 1 x OTG Y-cable like [this][ycable]
+3. 1 x USB hub
+4. 2 x USB2CAN adapters from [8devices][usb2can]
+[usb2can]:http://www.8devices.com/usb2can
+[ycable]:http://www.amazon.com/WOVTE-Micro-Cable-Galaxy-Samsung/dp/B00WWHNY0W
+
+NOTE: Depends on the specific project, extra materials should be needed.
+For ISOBUS purposes, ISOBUS plugs are needed.
 
 ### Software ###
 1. Android NDK from [Google][ndk]
@@ -110,11 +118,56 @@ $ fastboot flash boot boot.img.test
 Now, you should have an Android device that has OTG charging capabilities and
 CAN/ISOBUS interfaces.
 
-A simple app that functions as a raw CAN message logger is [here][candroid-app].
-Please see README in that repo.
-[candroid-app]:https://github.com/wang701/candroid-app
+## Work with CANdroid ##
 
+### System Overlook ###
+TBA
 
+### Install ADB Wifi ###
+This utility allows user to excute adb commands over Wifi.
+You can typically find this utility in Google Play Store.
+
+### Tools and scripts ###
+**can_log_raw.c** can be found in tools/ and **candroid-up/down.sh** can be
+found in scripts/.
+
+**can_log_raw.c** listens to all available CAN interfaces and print out
+CAN frames to stdout.
+
+**candroid-up/down.sh** set and brings up can0 and can1.
+
+To cross-compile **can_log_raw.c**, you need to have **ndk-build** in your
+system, and then in the tools directory do:
+```shellsession
+ndk-build V=1 NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk
+```
+After a succcessful build, the binary should be in libs/.
+
+Then, move the scripts and the binary to Nexus 9. For example, after
+connecting to the device, do:
+```shellsession
+adb push can_log_raw /data/local/tmp
+```
+NOTE: You need to make the binary executable and have the right permission
+in order to execute it.
+
+### Start logging CAN data ###
+Wire the connections as in the System Overlook.
+
+The driver 8devices's USB2CAN adapter is already built into the kernel.
+
+In Android's shell, cd into where scripts are stored, do:
+```shellsession
+# ./candroid-up.sh
+```
+This will birng up can0, can1 with 250kbps as bitrate.
+
+Then, run the logger:
+```shellsession
+# ./can_log_raw > can-data.txt
+
+Data should be redirected into the file you specified.
+```
 
 
 
