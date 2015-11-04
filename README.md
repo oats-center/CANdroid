@@ -165,11 +165,13 @@ This will birng up can0, can1 with 250kbps as bitrate.
 Then, run the logger:
 ```shellsession
 # ./can_log_raw > can-data.txt
-
-Data should be redirected into the file you specified.
 ```
+Data should be redirected into the file you specified.
 
-
+To stop the logger, in another Android's shell session, do:
+```shellsession
+# ./candroid-down.sh
+```
 
 
 
