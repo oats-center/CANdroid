@@ -10,10 +10,10 @@ frequently to reflect these changes.
 
 ### Hardware ###
 1. 1 x rooted [Nexus 9][N9] 
-[N9]:https://www.google.com/nexus/9
 2. 1 x OTG Y-cable like [this][ycable]
 3. 1 x USB hub
 4. 2 x USB2CAN adapters from [8devices][usb2can]
+[N9]:https://www.google.com/nexus/9
 [usb2can]:http://www.8devices.com/usb2can
 [ycable]:http://www.amazon.com/WOVTE-Micro-Cable-Galaxy-Samsung/dp/B00WWHNY0W
 
