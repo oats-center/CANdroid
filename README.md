@@ -120,7 +120,7 @@ CAN/ISOBUS interfaces.
 
 ## Work with CANdroid ##
 
-### System Overlook ###
+### Sample connection ###
 TBA
 
 ### Install ADB Wifi ###
@@ -139,14 +139,14 @@ CAN frames to stdout.
 To cross-compile **can_log_raw.c**, you need to have **ndk-build** in your
 system, and then in the tools directory do:
 ```shellsession
-ndk-build V=1 NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk
+$ ndk-build V=1 NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk
 ```
 After a succcessful build, the binary should be in libs/.
 
 Then, move the scripts and the binary to Nexus 9. For example, after
 connecting to the device, do:
 ```shellsession
-adb push can_log_raw /data/local/tmp
+$ adb push can_log_raw /data/local/tmp
 ```
 NOTE: You need to make the binary executable and have the right permission
 in order to execute it.
