@@ -121,7 +121,8 @@ CAN/ISOBUS interfaces.
 ## Work with CANdroid ##
 
 ### Sample connection ###
-TBA
+![Sample Connection][diagram]
+[diagram]: diagram.png
 
 ### Install ADB Wifi ###
 This utility allows user to excute adb commands over Wifi.
