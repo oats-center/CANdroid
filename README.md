@@ -123,6 +123,9 @@ CAN/ISOBUS interfaces.
 ### Sample connection ###
 ![Sample Connection][diagram]
 [diagram]: diagram.png
+NOTE: You don't have to have a power source unless you want to use OTG charging.
+NOTE': Currently, although charging is taking place in OTG mode, the battery
+gauge in system UI will not be updated accordingly.
 
 ### Install ADB Wifi ###
 This utility allows user to excute adb commands over Wifi.
@@ -153,9 +156,11 @@ NOTE: You need to make the binary executable and have the right permission
 in order to execute it.
 
 ### Start logging CAN data ###
-Wire the connections as in the System Overlook.
+Wire the connections as in the Sample Connection.
 
-The driver 8devices's USB2CAN adapter is already built into the kernel.
+The driver 8devices's USB2CAN adapter is already built into the kernel. So,
+when the adapters are plugged in, interfaces like can0, can1 will be
+automatically set up (but not the bitrate).
 
 In Android's shell, cd into where scripts are stored, do:
 ```shellsession
@@ -173,16 +178,3 @@ To stop the logger, in another Android's shell session, do:
 ```shellsession
 # ./candroid-down.sh
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
