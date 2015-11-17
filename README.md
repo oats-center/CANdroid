@@ -69,7 +69,7 @@ $ export SUBARCH=arm64
 $ export CROSS_COMPILE=aarch64-linux-android-
 $ make flounder_defconfig
 ```
-Copy .config from this repo into tegra repo and do:
+Rename your config to .config, copy .config into tegra repo and do:
 ```shellsession
 $ make all -j4
 ```
