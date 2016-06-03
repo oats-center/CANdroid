@@ -1,4 +1,4 @@
-# Turn Nexus 9 into CANdroid
+# Turn a Nexus 9 into CANdroid
 CAN/ISOBUS Enabled Android
 
 ## NOTE ##
